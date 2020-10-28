@@ -1,0 +1,25 @@
+{
+    "editor.autoClosingBrackets": "never",
+    "editor.autoClosingOvertype": "never",
+    "editor.autoClosingQuotes": "never",
+    "editor.autoSurround": "never",
+    "editor.acceptSuggestionOnCommitCharacter": false,
+    "breadcrumbs.enabled": true,
+    "editor.minimap.enabled": false,
+    "editor.renderWhitespace": "none",
+    "editor.renderControlCharacters": true,
+    "workbench.colorTheme": "Sublime Monokai",
+    "window.zoomLevel": 0,
+    "emmet.includeLanguages":{
+        "aspnetcorerazor": "html",
+        "razor": "html",
+        "javascript": "javascriptreact"
+    },
+    "emmet.excludeLanguages": [
+    
+
+        "markdown"
+    ],
+    "explorer.confirmDelete": false,
+    "github.gitAuthentication": false
+}
