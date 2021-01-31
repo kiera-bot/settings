@@ -1,0 +1,63 @@
+Docker + Asp.Net + App Engine
+
+Easy instructions on deploying a dockerized asp.net core project to Google App Engine.
+This assumes you already have an empty App Engine project set up & a .net core app ready to go.
+
+Make sure gCloud is installed
+	download sdk : https://cloud.google.com/sdk/docs/install
+	cd into folder with install
+	run: 
+		tar xvzf google-cloud-sdk-VERSION-darwin-x86_64.tar
+		cd google-cloud-sdk
+		./install.sh
+
+Publish your .net app 
+	cd into your project folder
+	dotnet publish -c Release
+
+Test your .net app (I mean, you should anyway...) Because of the way Docker will connect to App Engine, you can't test once you dockerize. You'll just get "localhost could not be found" errors.
+
+
+from you project's main folder, cd into your publish folder.
+should be something like this: 
+cd bin/Release/netcoreapp3.1/publish/
+
+Create a new Dockerfile 
+Add this to the file: 
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.1
+COPY . /app
+WORKDIR /app
+EXPOSE 8080
+ENV ASPNETCORE_URLS=http://*:8080
+ENTRYPOINT ["dotnet", "Whateveryounamedyourapp.dll"]
+
+
+Add a .dockerignore (if you want)
+# comment
+*/temp*
+*/*/temp*
+temp?
+
+
+Add a new app.yaml 
+Add this to the file: 
+runtime: custom
+env: flex
+
+Run the following to make sure docker build completes (we're just testing for build completion):
+docker build .
+
+Run and follow the instructions: 
+gcloud init 
+Make sure you're still in the same folder as your app.yaml, run:
+gcloud app deploy app.yaml
+it'll take awhile to do it's thing. When prompted run: 
+gcloud app browse
+
+yay it's live! :) 
+
+
+
+
+
+
