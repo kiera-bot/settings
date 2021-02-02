@@ -15,7 +15,9 @@ Publish your .net app
 	cd into your project folder
 	dotnet publish -c Release
 
-Test your .net app (I mean, you should anyway...) Because of the way Docker will connect to App Engine, you can't test once you dockerize. You'll just get "localhost could not be found" errors.
+Test your .net app (I mean, you should anyway...) 
+Because of the way Docker will connect to App Engine, you can't test once you dockerize (afaik) - 
+You'll just get "localhost could not be found" errors.
 
 
 from you project's main folder, cd into your publish folder.
